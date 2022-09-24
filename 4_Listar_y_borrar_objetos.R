@@ -8,11 +8,11 @@ options(scipen = 999)
 # Arroja las caracteristicas de memoria en uso y por utilizar
 gc() 
 
-# # Genera en un stop en el maximo ampliable.
-# memory.limit(9999999999) 
-# 
-# # Genera en un stop en el maximo ampliable. Ignorado = False
-# memory.limit(size=1470000) 
+# Genera en un stop en el maximo ampliable.
+memory.limit(9999999999) 
+
+# Genera en un stop en el maximo ampliable. Ignorado = False
+memory.limit(size=1470000) 
 
 
 #Para trabajar mas rapido con R aumentando el uso Ram en Mb
@@ -46,11 +46,11 @@ dir()
 
 # Cambiar el Directorio
 
-setwd("C:\\Users\\denis\\Desktop\\G1tHub\\1_Introduccion_a_R\\") 
+setwd("E:/ESTUDIOS") 
 
 
 # Guardo medioambiete
-save.image("C:\\Users\\denis\\Desktop\\G1tHub\\1_Introduccion_a_R\\53_24_09_2022_2_Instalar_y_cargar_paquetes.RData")
+save.image("E:/PROYECTOS/DOCENCIA_/INAP/Versi?n3_/Intro_RSTudio_/Scripts_&_Data_set_Clases_/402_28_04_2022_Environment_1.RData")
 
 
 # Instalamos paquete
@@ -64,31 +64,37 @@ library(readxl) # Corremos libreria para leer archivos xlsx en win
 library(openxlsx) # Corremos libreria para leer archivos xlsx en win
 library(writexl) # Corremos libreria para escribir archivos xlsx en win
 library(tidyverse)
+
+
+
 #------------------------------------------------------------------------------#
-# 2. Instalar y cargar paquetes
+# 4.1 Listar objetos.
 #------------------------------------------------------------------------------#
-# Utilizando la función install.packages()
-# El nombre del paquete que queremos instalar debe ir entre comillas.
+# Las funciones ls() y objects() hacen lo mismo: listan los objetos que hemos 
+# definido en la sesión.
 
-# dplyr es un paquete que se utiliza para manipular/gestionar datos
-install.packages("dplyr")
+x <- c(1:9)
+y <- c(10:1)
 
-# En ocasiones, para nuestra sesión de trabajo necesitamos instalar 
-# varios paquetes.
-install.packages(c("dplyr","ggplot2","xlsx"))
- 
-# Es habitual iniciar la sesión de trabajo en R con un “pequeño programa” 
-# en el que se indica que para la sesión se requiere una serie de paquetes 
-# y que si no están instalados los instale. Aquí tenemos la versión más 
-# sencilla para hacer esto:
+ls()
 
-if(!require(dplyr)) {install.packages("dplyr")}
-if(!require(dplyr)) {library(dplyr)}
+z <- c(20:28)
+objects()
 
-if(!require(tidyverse)) {install.packages("tidyverse")}
-if(!require(tidyverse)) {library(tidyverse)}
+#------------------------------------------------------------------------------#
+# 4.2 Borrar objetos.
+#------------------------------------------------------------------------------#
+# Si queremos borrar objetos utilizamos la función rm()
+rm(z)  # borramos el objeto z
 
-# Una vez instalado el paquete, hay que cargarlo para poderlo utilizar. 
-# Esto se hace con la función library().
-# Observad que el nombre del paquete no se pone entre comillas para cargarlo.
-library(dplyr)
+ls()
+
+# y si estamos interesados en borrar todos los objetos que hemos definido:
+
+rm(list=ls())
+
+# o
+
+rm(list=objects())
+
+ls()
