@@ -19,7 +19,7 @@ getwd()
 
 # Cambiar el Directorio
 
-setwd("C:\\Users\\denis\\Desktop\\G1tHub\\1_Introduccion_a_R\\") 
+setwd("C:\\Users\\denis\\OneDrive\\Escritorio\\1_Introduccion_a_R\\") 
 dir()
 #------------------------------------------------------------------------------#
 # 2. Instalar y cargar paquetes----
@@ -73,10 +73,19 @@ variable.names(data0)
 # 3.1 Importar archivos xlsx----
 #------------------------------------------------------------------------------#
 # install.packages("openxlsx") ---> https://r-coder.com/leer-excel-r/
+install.packages("openxlsx")
 library(openxlsx) #---> no depende de JAVA y output es dataframe.
 df1 <- read.xlsx("bd2015_dos_sheets.xlsx", sheet = 1)
 df2 <- read.xlsx("bd2015_dos_sheets.xlsx", sheet = 2)
 
+names(df1) # Antes de aplicar rbind, revisamos que df1 y df2 tienen las mismas v.a y en idéntico lugar.
+names(df2) # Idem
+
+df3 <- rbind(df1, df2, by = "MRUN", all.x = T) # Quiero crear un dataframe, con "todo lo de "Y" en "X" (de manera acumulativa).
+View(df3)
+class(df3)
+
+rm(df3)
 #------------------------------------------------------------------------------#
 # 4. Tratamiento columnas----
 #------------------------------------------------------------------------------#
